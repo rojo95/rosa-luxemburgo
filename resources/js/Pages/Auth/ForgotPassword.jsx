@@ -3,6 +3,7 @@ import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
+import InputLabel from '@/Components/InputLabel';
 
 export default function ForgotPassword({ status }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -17,16 +18,17 @@ export default function ForgotPassword({ status }) {
 
     return (
         <GuestLayout>
-            <Head title="Forgot Password" />
+            <Head title="Contraseña Olvidada" />
 
             <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                Forgot your password? No problem. Just let us know your email address and we will email you a password
-                reset link that will allow you to choose a new one.
+                ¿Olvidaste tu Contraseña?<br />
+                No hay problema. Sólo dejanos saber tu dirección de correo electrónico y enviaremos un email con un link para reiniciar la contraseña que te permitirá elegir una nueva.
             </div>
 
             {status && <div className="mb-4 font-medium text-sm text-green-600 dark:text-green-400">{status}</div>}
 
             <form onSubmit={submit}>
+                <InputLabel htmlFor="email" value="Correo Electrónico"/>
                 <TextInput
                     id="email"
                     type="email"
