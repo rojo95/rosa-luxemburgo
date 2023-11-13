@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ApplicationLogo from '@/Components/UI/ApplicationLogo';
 import Dropdown from '@/Components/UI/Dropdown';
+import CustomFooter from '@/Components/CustomFooter';
 import NavLink from '@/Components/UI/NavLink';
 import ResponsiveNavLink from '@/Components/UI/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
@@ -120,6 +121,10 @@ export default function Authenticated({ user, header, children }) {
             )}
 
             <main>{children}</main>
+
+            <footer>
+                <CustomFooter></CustomFooter>
+            </footer>
         </div>
     );
 }

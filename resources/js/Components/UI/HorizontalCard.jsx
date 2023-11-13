@@ -2,7 +2,7 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const HorizontalCard = ({ data: { title, icon, description } }) => (
+const HorizontalCard = ({ data: { title, icon, description, fuente } }) => (
     <div className="max-w-sm w-full lg:max-w-full lg:flex">
         <div
             className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
@@ -31,17 +31,21 @@ const HorizontalCard = ({ data: { title, icon, description } }) => (
                 <p className="text-gray-700 text-base">{description}</p>
             </div>
             <div className="flex items-center">
-                <img
-                    className="w-10 h-10 rounded-full mr-4"
-                    src="https://v1.tailwindcss.com/img/jonathan.jpg"
-                    alt="Avatar of Jonathan Reinink"
-                />
-                <div className="text-sm">
-                    <p className="text-gray-900 leading-none">
-                        Jonathan Reinink
-                    </p>
-                    <p className="text-gray-600">Aug 18</p>
-                </div>
+                {fuente && (
+                    <>
+                        <img
+                            className="w-10 h-10 rounded-full mr-4"
+                            src="https://v1.tailwindcss.com/img/jonathan.jpg"
+                            alt="Avatar of Jonathan Reinink"
+                        />
+                        <div className="text-sm">
+                            <p className="text-gray-900 leading-none">
+                                Jonathan Reinink
+                            </p>
+                            <p className="text-gray-600">Aug 18</p>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     </div>

@@ -57,12 +57,12 @@ export default function Dashboard({ auth }) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100 text-center">
-                            <h3>
+                            <h3 className="font-bold text-xl">
                                 ¡Bienvenido al Centro de Idiomas Rosa
                                 Luxemburgo!
                             </h3>
                         </div>
-                        <div className="p-6 text-gray-900 dark:text-gray-100">
+                        <div className="p-6 text-gray-900 dark:text-gray-100 mx-10">
                             Bienvenido al Centro de Idiomas Rosa Luxemburgo,
                             donde podrás aprender diferentes idiomas y expandir
                             tus horizontes. Aquí te esperamos para que disfrutes
@@ -82,6 +82,34 @@ export default function Dashboard({ auth }) {
                                 </div>
                             ))}
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="p-6 text-gray-900 dark:text-gray-100 text-center">
+                        <h3 className="font-bold text-xl">
+                            Acerca del Centro de Idiomas Rosa Luxemburgo
+                        </h3>
+                    </div>
+                    <div className="p-6 text-gray-900 dark:text-gray-100 text-justify mx-10">
+                        El Centro de Idiomas de la Universidad Bolivariana de
+                        Venezuela fue creado en octubre de 2005, adscrito al
+                        Vicerrectorado, en el marco del nuevo mapa estratégico
+                        de la nación con la finalidad de seguir impulsando el
+                        nuevo sistema multipolar internacional y de avanzar en
+                        la conformación de la nueva estructura social. Se basa
+                        también en el capítulo VIII de nuestro Documento Rector,
+                        en su Política II, donde se establece la formación
+                        bilingüe como parte de nuestro sistema de educación
+                        Bolivariano.
+                        <br />
+                        <br />
+                        El Centro de Idiomas cuenta, en la
+                        actualidad, con cinco sedes en el interior del país;
+                        Zulia, Falcón, Monagas y Bolívar. Además de estar
+                        presentes en las aldeas universitarias de la Misión
+                        Sucre – UBV
                     </div>
                 </div>
             </div>
