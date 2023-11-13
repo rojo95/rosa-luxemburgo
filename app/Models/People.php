@@ -13,5 +13,6 @@ class People extends Model
         'name',
         'lastname',
         'address',
+        'user_id',
     ];
 }

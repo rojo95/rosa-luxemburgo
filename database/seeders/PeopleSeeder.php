@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\People;
 
@@ -14,6 +15,7 @@ class PeopleSeeder extends Seeder
      */
     public function run(): void
     {
+        $s_word = env('SECRET_WORD');
         $people = [
             [
                 'name' => 'John',
@@ -44,7 +46,7 @@ class PeopleSeeder extends Seeder
 
             $user = User::create([
                 'email' => $person['email'],
-                'password' => bcrypt($person['password']),
+                'password' => Hash::make($person['password'].$s_word.$person['email']),
             ]);
 
             People::create([

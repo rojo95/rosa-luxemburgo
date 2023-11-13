@@ -1,4 +1,4 @@
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import ApplicationLogo from "@/Components/UI/ApplicationLogo";
 import { Link } from "@inertiajs/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
