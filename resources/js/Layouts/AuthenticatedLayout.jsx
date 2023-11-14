@@ -5,12 +5,14 @@ import CustomFooter from '@/Components/CustomFooter';
 import NavLink from '@/Components/UI/NavLink';
 import ResponsiveNavLink from '@/Components/UI/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
+import { NavigationBar } from '@/Components/NavigationBar/Index';
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
-        <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div className="min-h-screen bg-gray-100 dark:bg-gray-900py">
+            <NavigationBar user={user}></NavigationBar>
             <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
@@ -37,7 +39,7 @@ export default function Authenticated({ user, header, children }) {
                                                 type="button"
                                                 className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
                                             >
-                                                {user.name}
+                                                {user.email}
 
                                                 <svg
                                                     className="ms-2 -me-0.5 h-4 w-4"
@@ -120,10 +122,10 @@ export default function Authenticated({ user, header, children }) {
                 </header>
             )}
 
-            <main>{children}</main>
+            <main className='my-12'>{children}</main>
 
             <footer>
-                <CustomFooter></CustomFooter>
+                <CustomFooter/>
             </footer>
         </div>
     );

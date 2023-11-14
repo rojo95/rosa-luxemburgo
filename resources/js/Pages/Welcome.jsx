@@ -1,6 +1,7 @@
+import { NavigationBar } from '@/Components/NavigationBar/Index';
 import { Link, Head } from '@inertiajs/react';
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
+export default function Welcome({ auth, laravelVersion, phpVersion, p_name }) {
     return (
         <>
             <Head title="¡Bienvenido al Centro de Idiomas!" />
@@ -15,19 +16,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </Link>
                     ) : (
                         <>
-                            <Link
-                                href={route('login')}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Iniciar Sesión
-                            </Link>
-
-                            <Link
-                                href={route('register')}
-                                className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Registrarse
-                            </Link>
+                            <NavigationBar appName={p_name}/>
                         </>
                     )}
                 </div>

@@ -1,18 +1,20 @@
 import HorizontalCard from "@/Components/UI/HorizontalCard";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
 import {
     faLanguage,
     faBriefcase,
     faUsers,
     faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Head } from "@inertiajs/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import "@/../css/Pages/Dashboard.css";
 
 export default function Dashboard({ auth }) {
     const [data, setData] = useState({
+        classCard: "in",
+        count: 0,
         reasons: [
             {
                 title: "Conocer gente nueva",
@@ -41,7 +43,49 @@ export default function Dashboard({ auth }) {
         ],
     });
 
-    console.log(data);
+    function getRandomInt(min, max, current) {
+        let num;
+        do {
+            num = Math.floor(Math.random() * (max - min + 1)) + min;
+        } while (num === current);
+        return num;
+    }
+
+    function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function ChangeReason(ms) {
+        const interval = setInterval(async () => {
+            await setData((prevData) => ({
+                ...prevData,
+                classCard: " ",
+            }));
+            await delay(100);
+            await setData((prevData) => ({
+                ...prevData,
+                classCard: "left",
+            }));
+            await delay(250);
+            await setData((prevData) => ({
+                ...prevData,
+                count: getRandomInt(
+                    0,
+                    prevData.reasons.length - 1,
+                    prevData.count
+                ),
+            }));
+        }, ms); // 10000 milliseconds = 10 seconds
+        // Limpia el intervalo cuando el componente se desmonta
+        return () => {
+            clearInterval(interval);
+        };
+    }
+
+    useEffect(() => {
+        ChangeReason(15000);
+    }, []);
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -53,7 +97,7 @@ export default function Dashboard({ auth }) {
         >
             <Head title="Inicio" />
 
-            <div className="py-12">
+            <div>
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100 text-center">
@@ -62,7 +106,7 @@ export default function Dashboard({ auth }) {
                                 Luxemburgo!
                             </h3>
                         </div>
-                        <div className="p-6 text-gray-900 dark:text-gray-100 mx-10">
+                        <div className="pt-0 p-6 text-gray-900 dark:text-gray-100 mx-10">
                             Bienvenido al Centro de Idiomas Rosa Luxemburgo,
                             donde podrás aprender diferentes idiomas y expandir
                             tus horizontes. Aquí te esperamos para que disfrutes
@@ -74,13 +118,12 @@ export default function Dashboard({ auth }) {
                             como profesionalmente.
                             <br />
                             <br />
-                            {data.reasons.map((data, i) => (
-                                <div className="my-3 mx-5" key={i}>
-                                    <HorizontalCard
-                                        data={data}
-                                    ></HorizontalCard>
-                                </div>
-                            ))}
+                            <div className="my-3 mx-5 flex justify-center items-center">
+                                <HorizontalCard
+                                    className={data.classCard}
+                                    data={data.reasons[data.count]}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,7 +135,7 @@ export default function Dashboard({ auth }) {
                             Acerca del Centro de Idiomas Rosa Luxemburgo
                         </h3>
                     </div>
-                    <div className="p-6 text-gray-900 dark:text-gray-100 text-justify mx-10">
+                    <div className="pt-0 p-6 text-gray-900 dark:text-gray-100 text-justify mx-10">
                         El Centro de Idiomas de la Universidad Bolivariana de
                         Venezuela fue creado en octubre de 2005, adscrito al
                         Vicerrectorado, en el marco del nuevo mapa estratégico
@@ -105,11 +148,10 @@ export default function Dashboard({ auth }) {
                         Bolivariano.
                         <br />
                         <br />
-                        El Centro de Idiomas cuenta, en la
-                        actualidad, con cinco sedes en el interior del país;
-                        Zulia, Falcón, Monagas y Bolívar. Además de estar
-                        presentes en las aldeas universitarias de la Misión
-                        Sucre – UBV
+                        El Centro de Idiomas cuenta, en la actualidad, con cinco
+                        sedes en el interior del país; Zulia, Falcón, Monagas y
+                        Bolívar. Además de estar presentes en las aldeas
+                        universitarias de la Misión Sucre - UBV
                     </div>
                 </div>
             </div>

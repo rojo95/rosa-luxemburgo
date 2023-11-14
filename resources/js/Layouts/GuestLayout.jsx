@@ -3,12 +3,15 @@ import { Link } from "@inertiajs/react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { NavigationBar } from "@/Components/NavigationBar/Index";
+import CustomFooter from '@/Components/CustomFooter';
 
 export default function Guest({ auth, children }) {
     return (
         <>
-            <div className="bg-gray-300 p-5 w-full flex fixed bg-opacity-40">
-                <div className="w-full">
+            <NavigationBar />
+            {/*<div className="bg-gray-300 p-5 w-full flex bg-opacity-40">
+                 <div className="w-full">
                     <Link
                         href={route("inicio")}
                         className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
@@ -42,7 +45,7 @@ export default function Guest({ auth, children }) {
                         </>
                     )}
                 </div>
-            </div>
+            </div>*/}
             <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
                 <div>
                     <Link href="/">
@@ -54,6 +57,9 @@ export default function Guest({ auth, children }) {
                     {children}
                 </div>
             </div>
+            <footer>
+                <CustomFooter/>
+            </footer>
         </>
     );
 }

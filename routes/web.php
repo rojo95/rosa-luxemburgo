@@ -22,6 +22,7 @@ Route::get('/', function () {
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'p_name' => env("APP_NAME", "Instituto de Idiomas"),
     ]);
 })->name('inicio');
 
