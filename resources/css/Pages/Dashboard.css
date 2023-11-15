@@ -43,3 +43,7 @@
         transform: translateX(0px);
     }
 }
+
+.slider {
+    height: 500px;
+}

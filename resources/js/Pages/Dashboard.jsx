@@ -91,14 +91,21 @@ export default function Dashboard({ auth }) {
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    Dashboard
+                    Inicio
                 </h2>
             }
         >
             <Head title="Inicio" />
 
             <div>
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div className="w-full slider overflow-hidden flex justify-center items-center">
+                    <img
+                        src="https://img.freepik.com/foto-gratis/amigos-tiro-medio-charlando_23-2149009249.jpg?w=996&t=st=1700025105~exp=1700025705~hmac=5316eb99457ab57718379917e7df330f91796bbba979638e7a40158f02724b94"
+                        alt="header"
+                        width={"100%"}
+                    />
+                </div>
+                <div className="">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100 text-center">
                             <h3 className="font-bold text-xl">
@@ -128,7 +135,7 @@ export default function Dashboard({ auth }) {
                     </div>
                 </div>
             </div>
-            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div className="">
                 <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div className="p-6 text-gray-900 dark:text-gray-100 text-center">
                         <h3 className="font-bold text-xl">
