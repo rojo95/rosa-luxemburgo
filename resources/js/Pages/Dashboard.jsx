@@ -105,8 +105,8 @@ export default function Dashboard({ auth }) {
                         width={"100%"}
                     />
                 </div>
-                <div className="">
-                    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div className="px-10 bg-white">
+                    <div className="px-10 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100 text-center">
                             <h3 className="font-bold text-xl">
                                 ¡Bienvenido al Centro de Idiomas Rosa
