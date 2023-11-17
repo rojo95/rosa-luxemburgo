@@ -7,13 +7,12 @@ import ResponsiveNavLink from "@/Components/UI/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import { NavigationBar } from "@/Components/NavigationBar/Index";
 
-export default function Authenticated({ user, header, children }) {
+export default function Authenticated({ header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
-
     return (
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900py">
-            <NavigationBar user={user}></NavigationBar>
+            <NavigationBar></NavigationBar>
             {/* <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">

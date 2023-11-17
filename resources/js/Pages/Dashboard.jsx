@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import "@/../css/Pages/Dashboard.css";
 
 export default function Dashboard({ auth }) {
+    console.log("Dashboard: ",auth);
     const [data, setData] = useState({
         classCard: "in",
         count: 0,

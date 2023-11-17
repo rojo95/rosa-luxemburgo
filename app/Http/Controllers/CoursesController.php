@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Courses;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Auth;
 
 class CoursesController extends Controller
 {
@@ -13,7 +14,7 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $subjects = ['espanol','aleman','gay'];
+        $subjects = ['espanol','aleman'];
         return Inertia::render('Subjects/Index', [
             'subjects' => $subjects
         ]);

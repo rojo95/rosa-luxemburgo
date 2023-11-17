@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('address', 200);
+            $table->dateTime('birthdate');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

@@ -1,7 +1,7 @@
 import { NavigationBar } from '@/Components/NavigationBar/Index';
 import { Link, Head } from '@inertiajs/react';
 
-export default function Welcome({ auth, laravelVersion, phpVersion, p_name }) {
+export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="¡Bienvenido al Centro de Idiomas!" />
@@ -16,7 +16,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion, p_name }) {
                         </Link>
                     ) : (
                         <>
-                            <NavigationBar appName={p_name}/>
+                            <NavigationBar user={auth.user}/>
                         </>
                     )}
                 </div>

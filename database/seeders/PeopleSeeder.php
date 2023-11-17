@@ -23,6 +23,7 @@ class PeopleSeeder extends Seeder
                 'email' => 'j.doe@gmail.com',
                 'password' => '123456',
                 'address' => '123 Main St',
+                'birthdate' => '09-12-1995',
                 'rol' => 'Admin',
             ],
             [
@@ -31,6 +32,7 @@ class PeopleSeeder extends Seeder
                 'email' => 'm.herrera@gmail.com',
                 'password' => '123456',
                 'address' => '123 Calle Principal',
+                'birthdate' => '09-12-1995',
                 'rol' => 'Profesor',
             ],
             [
@@ -39,6 +41,7 @@ class PeopleSeeder extends Seeder
                 'email' => 'a.lander@gmail.com',
                 'password' => '123456',
                 'address' => '123 Calle Principal',
+                'birthdate' => '09-12-1995',
                 'rol' => 'Alumno',
             ]
         ];
@@ -54,6 +57,7 @@ class PeopleSeeder extends Seeder
                 'name' => $person['name'],
                 'lastname' => $person['lastname'],
                 'address' => $person['address'],
+                'birthdate' => $person['birthdate'],
             ]);
         }
     }

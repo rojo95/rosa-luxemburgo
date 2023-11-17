@@ -1,29 +1,34 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import React from "react";
 import NavLink from "../UI/NavLink";
 import ApplicationLogo from "../UI/ApplicationLogo";
 import Dropdown from "../UI/Dropdown";
 
-export const NavigationBar = ({ appName, user }) => {
+export const NavigationBar = () => {
+    const user = usePage().props.auth.user;
+    const appName = import.meta.env.VITE_APP_NAME || "Laravel";
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a
+                <div
                     href="https://flowbite.com/"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
-                    <Link href="/">
+                    <Link
+                        href="/"
+                        className="flex items-center space-x-3 rtl:space-x-reverse"
+                    >
                         <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        {/* <img
+                            src="https://flowbite.com/docs/images/logo.svg"
+                            className="h-8"
+                            alt="Flowbite Logo"
+                        /> */}
+                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                            {appName}
+                        </span>
                     </Link>
-                    {/* <img
-                        src="https://flowbite.com/docs/images/logo.svg"
-                        className="h-8"
-                        alt="Flowbite Logo"
-                    /> */}
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                        {appName || ""}
-                    </span>
-                </a>
+                </div>
                 <button
                     data-collapse-toggle="navbar-default"
                     type="button"
@@ -59,38 +64,6 @@ export const NavigationBar = ({ appName, user }) => {
                                 </NavLink>
                             </li>
                         )}
-                        <li>
-                            <NavLink
-                                href={route("dashboard")}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                About
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                href={route("dashboard")}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Services
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                href={route("dashboard")}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Pricing
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink
-                                href={route("dashboard")}
-                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                            >
-                                Contact
-                            </NavLink>
-                        </li>
                         {!user ? (
                             <>
                                 <li>
@@ -113,44 +86,93 @@ export const NavigationBar = ({ appName, user }) => {
                                 </li>
                             </>
                         ) : (
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="inline-flex rounded-md">
-                                        <button
-                                            type="button"
-                                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
-                                        >
-                                            {user.email}
-
-                                            <svg
-                                                className="ms-2 -me-0.5 h-4 w-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </span>
-                                </Dropdown.Trigger>
-
-                                <Dropdown.Content>
-                                    <Dropdown.Link href={route("profile.edit")}>
-                                        Profile
-                                    </Dropdown.Link>
-                                    <Dropdown.Link
-                                        href={route("logout")}
-                                        method="post"
-                                        as="button"
+                            <>
+                                <li>
+                                    <NavLink
+                                        href={route("courses.index")}
+                                        active={route().current(
+                                            "courses.index"
+                                        )}
+                                        className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                     >
-                                        Log Out
-                                    </Dropdown.Link>
-                                </Dropdown.Content>
-                            </Dropdown>
+                                        Cursos
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        href={route("dashboard")}
+                                        className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                    >
+                                        Services
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        href={route("dashboard")}
+                                        className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                    >
+                                        Pricing
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink
+                                        href={route("dashboard")}
+                                        className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                                    >
+                                        Contact
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <Dropdown>
+                                        <Dropdown.Trigger>
+                                            <span className="inline-flex rounded-md">
+                                                <button
+                                                    type="button"
+                                                    className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
+                                                >
+                                                    {`${
+                                                        user.user_info?.name.split(
+                                                            " "
+                                                        )[0]
+                                                    } ${
+                                                        user.user_info?.lastname.split(
+                                                            " "
+                                                        )[0]
+                                                    }`}
+
+                                                    <svg
+                                                        className="ms-2 -me-0.5 h-4 w-4"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                        viewBox="0 0 20 20"
+                                                        fill="currentColor"
+                                                    >
+                                                        <path
+                                                            fillRule="evenodd"
+                                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                            clipRule="evenodd"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                            </span>
+                                        </Dropdown.Trigger>
+
+                                        <Dropdown.Content>
+                                            <Dropdown.Link
+                                                href={route("profile.edit")}
+                                            >
+                                                Profile
+                                            </Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route("logout")}
+                                                method="post"
+                                                as="button"
+                                            >
+                                                Log Out
+                                            </Dropdown.Link>
+                                        </Dropdown.Content>
+                                    </Dropdown>
+                                </li>
+                            </>
                         )}
                     </ul>
                 </div>
