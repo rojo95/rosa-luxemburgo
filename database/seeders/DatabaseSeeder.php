@@ -12,7 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(PeopleSeeder::class);
+        $seeders = [
+            RolesSeeder::class,
+            PeopleSeeder::class,
+        ];
+
+        foreach ($seeders as $seed) {
+            $this->call($seed);
+        }
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

@@ -6,13 +6,13 @@ import {
     faUsers,
     faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
 import "@/../css/Pages/Dashboard.css";
 
-export default function Dashboard({ auth }) {
-    console.log("Dashboard: ",auth);
+export default function Dashboard() {
+    const { auth } = usePage().props;
     const [data, setData] = useState({
         classCard: "in",
         count: 0,

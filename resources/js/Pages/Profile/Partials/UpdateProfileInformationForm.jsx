@@ -11,15 +11,16 @@ export default function UpdateProfileInformation({
     status,
     className = "",
 }) {
-    const user = usePage().props.auth.user;
-    console.log(user)
+    const { user } = usePage().props.auth;
 
     const { data, setData, patch, errors, processing, recentlySuccessful } =
         useForm({
-            name: user.user_info?.name,
-            lastname: user.user_info?.lastname,
-            address: user.user_info?.address,
-            email: user.email,
+            name: user.userInfo?.name,
+            lastname: user.userInfo?.lastname,
+            address: user.userInfo?.address,
+            birthdate: new Date(user.userInfo.birthdate)
+                .toISOString()
+                .split("T")[0],
         });
 
     const submit = (e) => {
@@ -32,7 +33,7 @@ export default function UpdateProfileInformation({
         <section className={className}>
             <header>
                 <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    Información de Usuario
+                    Datos Personales
                 </h2>
 
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -90,15 +91,18 @@ export default function UpdateProfileInformation({
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="email" value="Correo Electrónico" />
+                    <InputLabel
+                        htmlFor="birthdate"
+                        value="Correo Electrónico"
+                    />
 
                     <TextInput
-                        id="email"
-                        type="email"
+                        id="birthdate"
                         className="mt-1 block w-full"
-                        value={data.email}
-                        onChange={(e) => setData("email", e.target.value)}
+                        value={data.birthdate}
+                        onChange={(e) => setData("birthdate", e.target.value)}
                         required
+                        type="date"
                         autoComplete="username"
                     />
 
@@ -115,7 +119,8 @@ export default function UpdateProfileInformation({
                                 as="button"
                                 className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                             >
-                                Clic aquí para reenviar la verificación de correo electrónico.
+                                Clic aquí para reenviar la verificación de
+                                correo electrónico.
                             </Link>
                         </p>
 
@@ -129,7 +134,9 @@ export default function UpdateProfileInformation({
                 )}
 
                 <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Actualizar</PrimaryButton>
+                    <PrimaryButton disabled={processing}>
+                        Actualizar
+                    </PrimaryButton>
 
                     <Transition
                         show={recentlySuccessful}

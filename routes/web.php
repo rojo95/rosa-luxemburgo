@@ -29,8 +29,9 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
+        $user = Auth::user()->userInfo;
         return Inertia::render('Dashboard',[
-            'users' => Auth::user()->userInfo
+            'user' => $user
         ]);
     })->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -5,7 +5,8 @@ import ApplicationLogo from "../UI/ApplicationLogo";
 import Dropdown from "../UI/Dropdown";
 
 export const NavigationBar = () => {
-    const user = usePage().props.auth.user;
+    const { user } = usePage().props.auth;
+    console.log(user);
     const appName = import.meta.env.VITE_APP_NAME || "Laravel";
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -131,11 +132,11 @@ export const NavigationBar = () => {
                                                     className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
                                                 >
                                                     {`${
-                                                        user.user_info?.name.split(
+                                                        user.userInfo?.name.split(
                                                             " "
                                                         )[0]
                                                     } ${
-                                                        user.user_info?.lastname.split(
+                                                        user.userInfo?.lastname.split(
                                                             " "
                                                         )[0]
                                                     }`}
