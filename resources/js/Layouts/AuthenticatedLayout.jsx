@@ -118,9 +118,11 @@ export default function Authenticated({ header, children }) {
                 </header>
             )}
 
-            <main>{children}</main>
+            <div class="min-h-screen">
+                <main>{children}</main>
+            </div>
 
-            <footer>
+            <footer className="bottom-0 w-full">
                 <CustomFooter />
             </footer>
         </div>

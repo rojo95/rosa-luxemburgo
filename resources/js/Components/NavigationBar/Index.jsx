@@ -1,8 +1,22 @@
 import { Link, usePage } from "@inertiajs/react";
 import React from "react";
-import NavLink from "../UI/NavLink";
-import ApplicationLogo from "../UI/ApplicationLogo";
-import Dropdown from "../UI/Dropdown";
+import NavLink from "@/Components/UI/NavLink";
+import ApplicationLogo from "@/Components/UI/ApplicationLogo";
+import Dropdown from "@/Components/UI/Dropdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faHome,
+    faDoorOpen,
+    faUserPlus,
+    faGraduationCap,
+    faTable,
+    faUserAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+    faNoteSticky,
+    faChartBar,
+    faUser,
+} from "@fortawesome/free-regular-svg-icons";
 
 export const NavigationBar = () => {
     const { user } = usePage().props.auth;
@@ -50,7 +64,8 @@ export const NavigationBar = () => {
                                     active={route().current("dashboard")}
                                     className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                 >
-                                    Inicio
+                                    <FontAwesomeIcon icon={faHome} />
+                                    &nbsp;Inicio
                                 </NavLink>
                             </li>
                         ) : (
@@ -60,7 +75,8 @@ export const NavigationBar = () => {
                                     active={route().current("inicio")}
                                     className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                 >
-                                    Inicio
+                                    <FontAwesomeIcon icon={faHome} />
+                                    &nbsp;Inicio
                                 </NavLink>
                             </li>
                         )}
@@ -72,7 +88,8 @@ export const NavigationBar = () => {
                                         href={route("login")}
                                         className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                     >
-                                        Iniciar Sesión
+                                        <FontAwesomeIcon icon={faDoorOpen} />
+                                        &nbsp;Iniciar Sesión
                                     </NavLink>
                                 </li>
                                 <li>
@@ -81,7 +98,8 @@ export const NavigationBar = () => {
                                         href={route("register")}
                                         className="ms-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                     >
-                                        Registrarse
+                                        <FontAwesomeIcon icon={faUserPlus} />
+                                        &nbsp;Registrarse
                                     </NavLink>
                                 </li>
                             </>
@@ -95,7 +113,10 @@ export const NavigationBar = () => {
                                         )}
                                         className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                     >
-                                        Cursos
+                                        <FontAwesomeIcon
+                                            icon={faGraduationCap}
+                                        />
+                                        &nbsp;Cursos
                                     </NavLink>
                                 </li>
                                 <li>
@@ -103,7 +124,8 @@ export const NavigationBar = () => {
                                         href={route("dashboard")}
                                         className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                     >
-                                        Horarios
+                                        <FontAwesomeIcon icon={faTable} />
+                                        &nbsp;Horarios
                                     </NavLink>
                                 </li>
                                 <li>
@@ -111,7 +133,8 @@ export const NavigationBar = () => {
                                         href={route("dashboard")}
                                         className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                     >
-                                        Notas
+                                        <FontAwesomeIcon icon={faNoteSticky} />
+                                        &nbsp;Notas
                                     </NavLink>
                                 </li>
                                 <li>
@@ -119,7 +142,8 @@ export const NavigationBar = () => {
                                         href={route("dashboard")}
                                         className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                     >
-                                        Estadísticas
+                                        <FontAwesomeIcon icon={faChartBar} />
+                                        &nbsp;Estadísticas
                                     </NavLink>
                                 </li>
                                 <li>
@@ -130,6 +154,10 @@ export const NavigationBar = () => {
                                                     type="button"
                                                     className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
                                                 >
+                                                    <FontAwesomeIcon
+                                                        icon={faUserAlt}
+                                                    />
+                                                    &nbsp;
                                                     {`${
                                                         user.userInfo?.name.split(
                                                             " "
@@ -139,7 +167,6 @@ export const NavigationBar = () => {
                                                             " "
                                                         )[0]
                                                     }`}
-
                                                     <svg
                                                         className="ms-2 -me-0.5 h-4 w-4"
                                                         xmlns="http://www.w3.org/2000/svg"
@@ -160,14 +187,20 @@ export const NavigationBar = () => {
                                             <Dropdown.Link
                                                 href={route("profile.edit")}
                                             >
-                                                Profile
+                                                <FontAwesomeIcon
+                                                    icon={faUser}
+                                                />
+                                                &nbsp;Profile
                                             </Dropdown.Link>
                                             <Dropdown.Link
                                                 href={route("logout")}
                                                 method="post"
                                                 as="button"
                                             >
-                                                Log Out
+                                                <FontAwesomeIcon
+                                                    icon={faDoorOpen}
+                                                />
+                                                &nbsp;Log Out
                                             </Dropdown.Link>
                                         </Dropdown.Content>
                                     </Dropdown>

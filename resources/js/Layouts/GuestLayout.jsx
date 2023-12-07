@@ -4,9 +4,9 @@ import { Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
 import { NavigationBar } from "@/Components/NavigationBar/Index";
-import CustomFooter from '@/Components/CustomFooter';
+import CustomFooter from "@/Components/CustomFooter";
 
-export default function Guest({ auth, children }) {
+export default function Guest({ children }) {
     return (
         <>
             <NavigationBar />
@@ -47,18 +47,10 @@ export default function Guest({ auth, children }) {
                 </div>
             </div>*/}
             <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-                {/* <div>
-                    <Link href="/">
-                        <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                    </Link>
-                </div> */}
-
-                <div className="">
-                    {children}
-                </div>
+                <div>{children}</div>
             </div>
             <footer>
-                <CustomFooter/>
+                <CustomFooter />
             </footer>
         </>
     );
