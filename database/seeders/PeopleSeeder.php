@@ -21,7 +21,7 @@ class PeopleSeeder extends Seeder
                 'name' => 'John',
                 'lastname' => 'Doe',
                 'email' => 'j.doe@gmail.com',
-                'password' => '123456',
+                'password' => '123456789',
                 'address' => '123 Main St',
                 'birthdate' => '09-12-1995',
                 'roles' => ['Administrador'],
@@ -30,7 +30,7 @@ class PeopleSeeder extends Seeder
                 'name' => 'Maria',
                 'lastname' => 'Herrera',
                 'email' => 'm.herrera@gmail.com',
-                'password' => '123456',
+                'password' => '123456789',
                 'address' => '123 Calle Principal',
                 'birthdate' => '09-12-1995',
                 'roles' => ['Profesor'],
@@ -50,7 +50,7 @@ class PeopleSeeder extends Seeder
             // crear el usuario
             $user = User::create([
                 'email' => $person['email'],
-                'password' => Hash::make($person['password'].$s_word.$person['email']),
+                'password' => Hash::make($person['password'] . $s_word . $person['email']),
             ]);
 
             // asignar rolres el usuario

@@ -6,8 +6,8 @@ import PrimaryButton from "@/Components/UI/PrimaryButton";
 import TextInput from "@/Components/UI/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 import TextArea from "@/Components/UI/TextArea";
-
-import _ from "lodash";
+import { CapitalizeText } from "@/functions/TextFormat";
+import ApplicationLogo from "@/Components/UI/ApplicationLogo";
 
 export default function Register() {
     const birthdateBase = new Date();
@@ -19,7 +19,7 @@ export default function Register() {
         password: "",
         password_confirmation: "",
         address: "",
-        birthdate: birthdateBase.toISOString().split('T')[0],
+        birthdate: birthdateBase.toISOString().split("T")[0],
     });
 
     useEffect(() => {
@@ -27,15 +27,6 @@ export default function Register() {
             reset("password", "password_confirmation");
         };
     }, []);
-
-    function CapitalizeName(text) {
-        const capitalizedText = (text = text
-            .split(" ")
-            .map((v, k) => _.capitalize(v))
-            .join(" "));
-        console.log(capitalizedText);
-        return capitalizedText;
-    }
 
     const submit = (e) => {
         e.preventDefault();
@@ -46,6 +37,11 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Registrarse" />
+            <div className="flex justify-center items-center">
+                <Link href="/">
+                    <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                </Link>
+            </div>
 
             <form onSubmit={submit}>
                 <div>
@@ -59,7 +55,7 @@ export default function Register() {
                         autoComplete="off"
                         isFocused={true}
                         onChange={(e) =>
-                            setData("name", CapitalizeName(e.target.value))
+                            setData("name", CapitalizeText(e.target.value))
                         }
                         required
                     />
@@ -77,7 +73,7 @@ export default function Register() {
                         className="mt-1 block w-full capitalize"
                         autoComplete="off"
                         onChange={(e) =>
-                            setData("lastname", CapitalizeName(e.target.value))
+                            setData("lastname", CapitalizeText(e.target.value))
                         }
                         required
                     />

@@ -5,6 +5,7 @@ import TextInput from "@/Components/UI/TextInput";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
 import TextArea from "@/Components/UI/TextArea";
+import { CapitalizeText } from "@/functions/TextFormat";
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,
@@ -49,7 +50,9 @@ export default function UpdateProfileInformation({
                         id="name"
                         className="mt-1 block w-full"
                         value={data.name}
-                        onChange={(e) => setData("name", e.target.value)}
+                        onChange={(e) =>
+                            setData("name", CapitalizeText(e.target.value))
+                        }
                         required
                         isFocused
                         autoComplete="name"
@@ -65,7 +68,7 @@ export default function UpdateProfileInformation({
                         id="lastname"
                         className="mt-1 block w-full"
                         value={data.lastname}
-                        onChange={(e) => setData("lastname", e.target.value)}
+                        onChange={(e) => setData("lastname", CapitalizeText(e.target.value))}
                         required
                         isFocused
                         autoComplete="lastname"
@@ -87,13 +90,13 @@ export default function UpdateProfileInformation({
                         autoComplete="address"
                     />
 
-                    <InputError className="mt-2" message={errors.name} />
+                    <InputError className="mt-2" message={errors.address} />
                 </div>
 
                 <div>
                     <InputLabel
                         htmlFor="birthdate"
-                        value="Correo Electrónico"
+                        value="Fecha de Nacimiento"
                     />
 
                     <TextInput
@@ -106,7 +109,7 @@ export default function UpdateProfileInformation({
                         autoComplete="username"
                     />
 
-                    <InputError className="mt-2" message={errors.email} />
+                    <InputError className="mt-2" message={errors.birthdate} />
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (
@@ -146,7 +149,7 @@ export default function UpdateProfileInformation({
                         leaveTo="opacity-0"
                     >
                         <p className="text-sm text-gray-600 dark:text-gray-400">
-                            Saved.
+                            Actualizado.
                         </p>
                     </Transition>
                 </div>

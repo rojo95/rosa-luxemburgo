@@ -21,7 +21,7 @@ export default function UpdatePasswordForm({ className = "" }) {
         recentlySuccessful,
     } = useForm({
         email: user.email,
-        current_password: "",
+        current_pass: "",
         password: "",
         password_confirmation: "",
     });
@@ -31,7 +31,7 @@ export default function UpdatePasswordForm({ className = "" }) {
 
         put(route("password.update"), {
             preserveScroll: true,
-            onSuccess: () => reset(),
+            onSuccess: () => reset("password","password_confirmation","current_pass"),
             onError: (errors) => {
                 if (errors.password) {
                     reset("password", "password_confirmation");
@@ -39,7 +39,7 @@ export default function UpdatePasswordForm({ className = "" }) {
                 }
 
                 if (errors.current_password) {
-                    reset("current_password");
+                    reset("current_pass");
                     currentPasswordInput.current.focus();
                 }
             },
@@ -78,16 +78,16 @@ export default function UpdatePasswordForm({ className = "" }) {
 
                 <div>
                     <InputLabel
-                        htmlFor="current_password"
+                        htmlFor="current_pass"
                         value="Current Password"
                     />
 
                     <TextInput
-                        id="current_password"
+                        id="current_pass"
                         ref={currentPasswordInput}
-                        value={data.current_password}
+                        value={data.current_pass}
                         onChange={(e) =>
-                            setData("current_password", e.target.value)
+                            setData("current_pass", e.target.value)
                         }
                         type="password"
                         className="mt-1 block w-full"
