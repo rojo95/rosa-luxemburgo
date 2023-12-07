@@ -1,9 +1,11 @@
 import { faMap } from "@fortawesome/free-regular-svg-icons";
 import { faHeart, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { usePage } from "@inertiajs/react";
 import React from "react";
 
 export default function Footer() {
+    const { laravelVersion, phpVersion } = usePage().props;
     const hoy = new Date();
     return (
         <div className="pt-2 lg:pt-10 p-10 bg-gray-200 lg:px-5">
@@ -62,6 +64,9 @@ export default function Footer() {
                     >
                         OVNISOLUTIONS
                     </a>
+                </div>
+                <div className="ms-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-end sm:ms-0">
+                    Laravel v{laravelVersion} (PHP v{phpVersion})
                 </div>
             </div>
         </div>

@@ -6,7 +6,6 @@ import Dropdown from "../UI/Dropdown";
 
 export const NavigationBar = () => {
     const { user } = usePage().props.auth;
-    console.log(user);
     const appName = import.meta.env.VITE_APP_NAME || "Laravel";
     return (
         <nav className="bg-white border-gray-200 dark:bg-gray-900">

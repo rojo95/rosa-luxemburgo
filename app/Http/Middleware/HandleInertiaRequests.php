@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
+use Illuminate\Foundation\Application;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -32,6 +33,8 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
 
+        $laravelVersion = Application::VERSION;
+        $phpVersion = PHP_VERSION;
         $user = Auth::user();
 
         if ($user) {
@@ -39,22 +42,24 @@ class HandleInertiaRequests extends Middleware
 
             $user = [
                 'id' => $user->id,
-                'userInfo' => collect($user->userInfo)->except(['user_id', 'updated_at','id']),
+                'userInfo' => collect($user->userInfo)->except(['user_id', 'updated_at', 'id']),
                 'email' => $user->email,
                 'roles' => collect($user->roles)->map(function ($rol) {
-                    return collect($rol)->only(['id','name']);
+                    return collect($rol)->only(['id', 'name']);
                 }),
             ];
         }
 
         return [
             ...parent::share($request),
+            'laravelVersion' => $laravelVersion,
+            'phpVersion' => $phpVersion,
             // 'aut
             // Lazily...
-            'auth.user' => fn () => $request->user()
+            'auth.user' => fn() => $request->user()
                 ? $user
                 : null,
-            'ziggy' => fn () => [
+            'ziggy' => fn() => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
             ],

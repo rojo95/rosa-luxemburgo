@@ -291,7 +291,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
 
                     <div className="flex justify-center mt-16 px-6 sm:items-center sm:justify-between">
-                        <div className="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-start">
+                        {/* <div className="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-start">
                             <div className="flex items-center gap-4">
                                 <a
                                     target="_blank"
@@ -319,7 +319,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                         <div className="ms-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-end sm:ms-0">
                             Laravel v{laravelVersion} (PHP v{phpVersion})
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
