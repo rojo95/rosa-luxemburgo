@@ -52,7 +52,7 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
-            <div className="grid grid-cols-1 grid-flow-col gap-4 mt-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
                 <div className="">
                     © {hoy.getFullYear()}. Todos los Derechos Reservados.
                     Diseñado y desarrollado con&nbsp;
@@ -65,7 +65,7 @@ export default function Footer() {
                         OVNISOLUTIONS
                     </a>
                 </div>
-                <div className="ms-4 text-center text-sm text-gray-500 dark:text-gray-400 sm:text-end sm:ms-0">
+                <div className="ms-4 sm:text-center text-sm text-gray-500 dark:text-gray-400 md:text-end sm:ms-0">
                     Laravel v{laravelVersion} (PHP v{phpVersion})
                 </div>
             </div>
