@@ -1,8 +1,15 @@
+import { CapitalizeText } from "@/functions/TextFormat";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const HorizontalCard = ({className, data: { title, icon, description, fuente } }) => (
+import "@/../css/Components/UI/Card/Card.css";
+import PrimaryButton from "./PrimaryButton";
+
+const HorizontalCard = ({
+    className,
+    data: { title, icon, description, fuente },
+}) => (
     <div className={`max-w-sm w-full lg:max-w-full lg:flex ${className}`}>
         <div
             className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
@@ -51,4 +58,38 @@ const HorizontalCard = ({className, data: { title, icon, description, fuente } }
     </div>
 );
 
+const Card = ({ title, tags, description, image }) => (
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        {image && (
+            <div className="w-full overflow-hidden language-card-image-container">
+                <img
+                    class="w-full language-card-image"
+                    src={image}
+                    alt={image}
+                />
+            </div>
+        )}
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">
+                {CapitalizeText(title) || "Título"}
+            </div>
+            <p class="text-gray-700 text-base limit-text">{description}</p>
+        </div>
+        <div class="px-6 pt-4 pb-2 grid grid-cols-3 gap-4 flex items-end">
+            <div className="col-span-2">
+                {tags &&
+                    tags.map((tag) => (
+                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                            {tag}
+                        </span>
+                    ))}
+            </div>
+            <div className="">
+                <PrimaryButton>Inscribir</PrimaryButton>
+            </div>
+        </div>
+    </div>
+);
+
 export default HorizontalCard;
+export { HorizontalCard, Card };

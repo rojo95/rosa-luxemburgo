@@ -1,0 +1,16 @@
+.language-card-image {
+    width: 100%;
+    height: auto;
+}
+
+.language-card-image-container {
+    width: 384px;
+    height: 216px;
+}
+
+.limit-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

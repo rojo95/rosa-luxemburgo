@@ -1,4 +1,4 @@
-import HorizontalCard from "@/Components/UI/HorizontalCard";
+import {HorizontalCard} from "@/Components/UI/Card";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import {
     faLanguage,

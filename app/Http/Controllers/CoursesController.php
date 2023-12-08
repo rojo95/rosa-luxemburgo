@@ -14,7 +14,50 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $subjects = ['espanol','aleman'];
+        $subjects = [
+            [
+                'name' => 'español para extranjeros',
+                'image' => 'https://pbs.twimg.com/media/EwSiP5bXEAM9pKA.png',
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
+                'quota' => 30,
+                'registrations' => 10,
+            ],
+            [
+                'name' => 'aleman',
+                'image' => 'https://media.ambito.com/p/80028e41e9945460497ab5f4ad3eefcb/adjuntos/239/imagenes/040/789/0040789549/alemania-banderajpg.jpg',
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
+                'quota' => 30,
+                'registrations' => 10,
+            ],
+            [
+                'name' => 'chino (simplificado)',
+                'image' => 'https://img.europapress.es/fotoweb/fotonoticia_20181113201849_640.jpg',
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
+                'quota' => 30,
+                'registrations' => 10,
+            ],
+            [
+                'name' => 'francés',
+                'image' => 'https://eldinero.com.do/wp-content/uploads/francia-economia.jpeg',
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
+                'quota' => 30,
+                'registrations' => 10,
+            ],
+            [
+                'name' => 'inglés',
+                'image' => 'https://ichef.bbci.co.uk/news/640/cpsprodpb/0A8C/production/_127500720_gettyimages-1243678871.jpg',
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
+                'quota' => 30,
+                'registrations' => 10,
+            ],
+            [
+                'name' => 'ruso',
+                'image' => 'https://images.ecestaticos.com/PPGv3Bmdzqc44G4r1uxlE2YmCrw=/0x0:2272x1565/1338x752/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fcd1%2Fab9%2Fd23%2Fcd1ab9d23318cee8c46ae65888a9295a.jpg',
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
+                'quota' => 30,
+                'registrations' => 10,
+            ],
+        ];
         return Inertia::render('Subjects/Index', [
             'subjects' => $subjects
         ]);
