@@ -58,34 +58,36 @@ const HorizontalCard = ({
     </div>
 );
 
-const Card = ({ title, tags, description, image }) => (
-    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+const Card = ({ title = "Título", tags, description, image, button }) => (
+    <div className="max-w-sm rounded overflow-hidden shadow-lg bg-gray-100 dark:bg-gray-500 dark:text-gray-100">
         {image && (
             <div className="w-full overflow-hidden language-card-image-container">
                 <img
-                    class="w-full language-card-image"
+                    className="w-full language-card-image"
                     src={image}
                     alt={image}
                 />
             </div>
         )}
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">
+        <div className="px-6 py-4">
+            <div className="font-bold text-xl mb-2">
                 {CapitalizeText(title) || "Título"}
             </div>
-            <p class="text-gray-700 text-base limit-text">{description}</p>
+            <p className="text-gray-700 dark:text-gray-100 text-base limit-text">
+                {description}
+            </p>
         </div>
-        <div class="px-6 pt-4 pb-2 grid grid-cols-3 gap-4 flex items-end">
+        <div className="px-6 pt-4 pb-2 grid grid-cols-3 gap-4 flex items-end">
             <div className="col-span-2">
                 {tags &&
                     tags.map((tag) => (
-                        <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
                             {tag}
                         </span>
                     ))}
             </div>
             <div className="">
-                <PrimaryButton>Inscribir</PrimaryButton>
+                {button && <PrimaryButton className="w-full justify-center items-center" onClick={button.funct}>{button.text}</PrimaryButton>}
             </div>
         </div>
     </div>

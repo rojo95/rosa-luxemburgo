@@ -51,6 +51,13 @@ class CoursesController extends Controller
                 'registrations' => 10,
             ],
             [
+                'name' => 'portugués',
+                'image' => 'https://cdn.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2023/07/bandera-portugal-3090372.jpg',
+                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
+                'quota' => 30,
+                'registrations' => 10,
+            ],
+            [
                 'name' => 'ruso',
                 'image' => 'https://images.ecestaticos.com/PPGv3Bmdzqc44G4r1uxlE2YmCrw=/0x0:2272x1565/1338x752/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fcd1%2Fab9%2Fd23%2Fcd1ab9d23318cee8c46ae65888a9295a.jpg',
                 'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.',
@@ -68,7 +75,7 @@ class CoursesController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Subjects/CreateSubject');
     }
 
     /**

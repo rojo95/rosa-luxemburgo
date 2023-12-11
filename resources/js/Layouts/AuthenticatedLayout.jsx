@@ -118,7 +118,7 @@ export default function Authenticated({ header, children }) {
                 </header>
             )}
 
-            <div class="min-h-screen">
+            <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
                 <main>{children}</main>
             </div>
 

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,7 +31,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         $user = Auth::user()->userInfo;
-        return Inertia::render('Dashboard',[
+        return Inertia::render('Dashboard', [
             'user' => $user
         ]);
     })->name('dashboard');
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
+    Route::get('/register-course', [CoursesController::class, 'create'])->name('courses.create');
+
+    Route::get('/schedules', [ScheduleController::class, 'index'])->name('schedules.index');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

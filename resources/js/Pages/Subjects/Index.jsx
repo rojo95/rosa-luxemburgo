@@ -2,6 +2,10 @@ import React from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { Card } from "@/Components/UI/Card";
+import SecondaryButton from "@/Components/UI/SecondaryButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import NavLink from "@/Components/UI/NavLink";
 
 export default function Index({ subjects }) {
     return (
@@ -13,10 +17,23 @@ export default function Index({ subjects }) {
             }
         >
             <Head title="Cursos" />
-            <div className="p-14">
-                <div class="grid grid-cols-3 gap-4 px-14">
+            <div className="md:p-14">
+                <div className="px-14 mb-3 grid justify-items-end ">
+                    <div>
+                    <NavLink
+                        href={route('courses.create')}
+                        className="flex items-center space-x-3 rtl:space-x-reverse"
+                    >
+                            <SecondaryButton>
+                                <FontAwesomeIcon icon={faPlus} />
+                                &nbsp;Registrar Idioma
+                            </SecondaryButton>
+                        </NavLink>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-14">
                     {subjects.map((info) => (
-                        <div class="row-span-1">
+                        <div className="row-span-1">
                             <Card
                                 image={info.image}
                                 title={info.name}
@@ -25,10 +42,9 @@ export default function Index({ subjects }) {
                                     `Cupos Disponibles: ${
                                         info.quota - info.registrations
                                     }`,
-                                    `Estudiantes Inscritos: ${
-                                        info.registrations
-                                    }`,
+                                    `Estudiantes Inscritos: ${info.registrations}`,
                                 ]}
+                                button={{text: 'Ver'}}
                             />
                         </div>
                     ))}

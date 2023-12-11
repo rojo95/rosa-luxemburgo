@@ -57,29 +57,18 @@ export const NavigationBar = () => {
                     id="navbar-default"
                 >
                     <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                        {user ? (
-                            <li>
-                                <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                    className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                >
-                                    <FontAwesomeIcon icon={faHome} />
-                                    &nbsp;Inicio
-                                </NavLink>
-                            </li>
-                        ) : (
-                            <li>
-                                <NavLink
-                                    href={route("inicio")}
-                                    active={route().current("inicio")}
-                                    className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                >
-                                    <FontAwesomeIcon icon={faHome} />
-                                    &nbsp;Inicio
-                                </NavLink>
-                            </li>
-                        )}
+                        <li>
+                            <NavLink
+                                href={route(!user ? "inicio" : "dashboard")}
+                                active={route().current(
+                                    !user ? "inicio" : "dashboard"
+                                )}
+                                className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                            >
+                                <FontAwesomeIcon icon={faHome} />
+                                &nbsp;Inicio
+                            </NavLink>
+                        </li>
                         {!user ? (
                             <>
                                 <li>
@@ -121,7 +110,8 @@ export const NavigationBar = () => {
                                 </li>
                                 <li>
                                     <NavLink
-                                        href={route("dashboard")}
+                                        href={route("schedules.index")}
+                                        active={route().current("schedules.index")}
                                         className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
                                     >
                                         <FontAwesomeIcon icon={faTable} />
