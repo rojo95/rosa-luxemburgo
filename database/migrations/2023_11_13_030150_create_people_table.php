@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('lastname', 50);
             $table->string('address', 200);
             $table->dateTime('birthdate');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained(); // ASIGNACION AUTOMATICA DE RELACION FORANEA SEGUN LA CONVENCION  USER?ID CON TABLA USERS
             $table->timestamps();
         });
     }
